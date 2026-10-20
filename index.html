@@ -77,8 +77,8 @@ h1{font-size:clamp(38px,5.6vw,62px);line-height:1.05;letter-spacing:-.035em;font
 .btn:hover{border-color:var(--ink);color:var(--ink)}
 .btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
-.portrait{position:relative;aspect-ratio:1;isolation:isolate}
-.portrait::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent);opacity:.16;border-radius:58% 42% 38% 62% / 46% 58% 42% 54%;transform:translate(14px,12px) rotate(-8deg);animation:blob 18s ease-in-out infinite alternate-reverse}
+.portrait{position:relative;aspect-ratio:1;isolation:isolate;margin-bottom:96px}
+.portrait::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent);opacity:.16;border-radius:58% 42% 38% 62% / 46% 58% 42% 54%;transform:translate(14px,-10px) rotate(-8deg);animation:blob 18s ease-in-out infinite alternate-reverse}
 .photo{width:100%;height:100%;object-fit:cover;border-radius:46% 54% 60% 40% / 42% 43% 57% 58%;box-shadow:var(--shadow);background:var(--line);animation:blob 18s ease-in-out infinite alternate}
 @keyframes blob{
   0%{border-radius:46% 54% 60% 40% / 42% 43% 57% 58%}
@@ -131,7 +131,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media (max-width:860px){
   .hero{grid-template-columns:1fr;gap:36px;padding:48px 0 56px}
-  .portrait{width:150px;order:-1}
+  .portrait{width:150px;order:-1;margin-bottom:0}
   .sh{grid-template-columns:1fr;gap:20px}
   .stats,.principles{grid-template-columns:1fr}
   .projects{grid-template-columns:1fr}
