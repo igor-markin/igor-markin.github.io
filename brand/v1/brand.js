@@ -23,6 +23,7 @@
       mail: 'Email me',
       also: 'More of my projects',
       photo: 'Igor Markin',
+      name: 'Igor Markin',
     },
     ru: {
       kicker: 'Автор',
@@ -32,6 +33,7 @@
       mail: 'Написать',
       also: 'Ещё мои проекты',
       photo: 'Игорь Маркин',
+      name: 'Игорь Маркин',
     },
     he: {
       kicker: 'היוצר',
@@ -41,6 +43,7 @@
       mail: 'לכתוב לי',
       also: 'עוד פרויקטים שלי',
       photo: 'איגור מרקין',
+      name: 'איגור מרקין',
     },
   };
 
@@ -96,6 +99,12 @@
     block.append(photoLink, text, actions, also);
   }
 
+  // Footer signature: "© <year> Igor Markin", linked to the main site. data-im-sign="short" keeps only the year.
+  function sign(link, t) {
+    link.href = HOME;
+    link.textContent = '© ' + new Date().getFullYear() + (link.dataset.imSign === 'short' ? '' : ' ' + t.name);
+  }
+
   function render() {
     const lang = (document.documentElement.lang || 'en').slice(0, 2);
     const t = TEXT[lang] || TEXT.en;
@@ -104,6 +113,7 @@
       block.dataset.imLang = lang;
       paint(block, t, n);
     });
+    document.querySelectorAll('.im-foot-sign').forEach((link) => sign(link, t));
   }
 
   new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
