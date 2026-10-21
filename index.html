@@ -18,6 +18,8 @@
 <meta property="profile:first_name" content="Igor">
 <meta property="profile:last_name" content="Markin">
 <meta name="twitter:card" content="summary_large_image">
+<script>try{var t=localStorage.getItem("site-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+<script src="/assets/i18n.js" defer></script>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preload" as="image" href="/assets/igor-640.webp">
 <script type="application/ld+json">
@@ -45,10 +47,15 @@
   --line:#e3dfd5;--accent:#1f5c4b;--accent-soft:#e3eee8;--shadow:0 1px 2px rgb(30 28 20/.04),0 8px 28px rgb(30 28 20/.06);
   color-scheme:light dark;
 }
-@media (prefers-color-scheme:dark){:root{
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){
   --bg:#141513;--surface:#1c1d1a;--ink:#ecebe6;--muted:#a9a79f;--faint:#7c7a73;
   --line:#2d2e2a;--accent:#7cc4a8;--accent-soft:#1f2c27;--shadow:0 1px 2px rgb(0 0 0/.3),0 8px 28px rgb(0 0 0/.25);
 }}
+:root[data-theme=dark]{
+  --bg:#141513;--surface:#1c1d1a;--ink:#ecebe6;--muted:#a9a79f;--faint:#7c7a73;
+  --line:#2d2e2a;--accent:#7cc4a8;--accent-soft:#1f2c27;--shadow:0 1px 2px rgb(0 0 0/.3),0 8px 28px rgb(0 0 0/.25);
+}
+:root[data-theme=light]{color-scheme:light}
 *{box-sizing:border-box;margin:0}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:17px/1.6 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -57,7 +64,7 @@ a:hover{color:var(--accent);text-decoration-color:currentColor}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 img{display:block;max-width:100%;height:auto}
 .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
-.skip{position:absolute;left:-999px}.skip:focus{left:16px;top:16px;background:var(--surface);padding:8px 12px;z-index:9}
+.skip{position:absolute;top:16px;inset-inline-start:16px;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}.skip:focus{width:auto;height:auto;clip-path:none;background:var(--surface);padding:8px 12px;z-index:9}
 
 header{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent}
 header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
@@ -65,6 +72,14 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 nav{display:flex;gap:28px;font-size:15px}
 nav a{text-decoration:none;color:var(--muted)}
 nav a:hover{color:var(--ink)}
+.controls{display:flex;align-items:center;gap:8px}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;padding:2px}
+.lang button{font:inherit;font-size:12.5px;font-weight:600;border:0;background:none;color:var(--muted);padding:3px 9px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.theme{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer}
+.theme:hover{color:var(--ink)}
+.theme .sun{display:none}.dark-on .theme .sun{display:block}.dark-on .theme .moon{display:none}
+[dir=rtl] .eyebrow,[dir=rtl] h2{letter-spacing:0}
 
 .hero{display:grid;grid-template-columns:1fr 260px;gap:64px;align-items:center;padding:88px 0 72px}
 .eyebrow{font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
@@ -113,7 +128,7 @@ h3{font-size:21px;line-height:1.3;letter-spacing:-.015em;font-weight:650}
 .job:first-child{padding-top:0}.job:last-child{border-bottom:0;padding-bottom:0}
 .when{white-space:nowrap;font-size:15px;color:var(--faint);font-variant-numeric:tabular-nums;padding-top:3px}
 .role{color:var(--muted);font-size:16px;margin-top:2px}
-.job ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:16px}
+.job ul{margin:12px 0 0;padding-inline-start:18px;color:var(--muted);font-size:16px}
 .job li{margin-top:5px}.job li::marker{color:var(--faint)}
 
 .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
@@ -142,21 +157,31 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .wrap{padding:0 16px}
   nav{gap:18px;font-size:14px}
   nav .opt{display:none}
+  header .wrap{gap:12px}
+  .brand{white-space:nowrap}
   .job{grid-template-columns:1fr;gap:4px}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.photo,.portrait::before{animation:none}}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 <header>
   <div class="wrap">
-    <a class="brand" href="/">Igor Markin</a>
+    <a class="brand" href="/" data-i18n="brand">Igor Markin</a>
     <nav aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="#experience">Experience</a>
-      <a class="opt" href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
+      <a href="#work" data-i18n="navWork">Work</a>
+      <a class="opt" href="#experience" data-i18n="navExp">Experience</a>
+      <a class="opt" href="#skills" data-i18n="navSkills">Skills</a>
+      <a class="opt" href="#contact" data-i18n="navContact">Contact</a>
+      <div class="controls">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
+          <button type="button" data-lang="he" aria-pressed="false" lang="he">HE</button>
+          <button type="button" data-lang="ru" aria-pressed="false" lang="ru">RU</button>
+        </div>
+        <button class="theme" type="button" aria-label="Dark theme"><svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      </div>
     </nav>
   </div>
 </header>
@@ -164,62 +189,62 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <main id="main" class="wrap">
   <div class="hero">
     <div>
-      <p class="eyebrow">Senior Full-Stack Engineer</p>
-      <h1>I build LLM&#8209;powered products that hold up in production.</h1>
-      <p class="lede">11 years in web development: 5 as a freelancer and 6 in product teams, including a team lead role. I work mostly on the backend with Python, Node.js, TypeScript and PostgreSQL.</p>
-      <p class="status"><i aria-hidden="true"></i>Open to Senior Full-Stack and Backend roles · Israel or remote</p>
+      <p class="eyebrow" data-i18n="eyebrow">Senior Full-Stack Engineer</p>
+      <h1 data-i18n="h1">I build LLM&#8209;powered products that hold up in production.</h1>
+      <p class="lede" data-i18n="lede">11 years in web development: 5 as a freelancer and 6 in product teams, including a team lead role. I work mostly on the backend with Python, Node.js, TypeScript and PostgreSQL.</p>
+      <p class="status"><i aria-hidden="true"></i><span data-i18n="status">Open to Senior Full-Stack and Backend roles · Israel or remote</span></p>
       <div class="actions">
-        <a class="btn primary" href="mailto:9588604@gmail.com">Email me</a>
+        <a class="btn primary" href="mailto:9588604@gmail.com" data-i18n="emailMe">Email me</a>
         <a class="btn" href="https://www.linkedin.com/in/markin-pro/" rel="me">LinkedIn</a>
         <a class="btn" href="https://github.com/igor-markin" rel="me">GitHub</a>
       </div>
     </div>
-    <div class="portrait"><img class="photo" src="/assets/igor-640.webp" srcset="/assets/igor-320.webp 320w, /assets/igor-640.webp 640w" sizes="(max-width:860px) 150px, 260px" width="260" height="260" alt="Portrait of Igor Markin"></div>
+    <div class="portrait"><img class="photo" src="/assets/igor-640.webp" srcset="/assets/igor-320.webp 320w, /assets/igor-640.webp 640w" sizes="(max-width:860px) 150px, 260px" width="260" height="260" alt="Portrait of Igor Markin" data-i18n-alt="altPortrait"></div>
   </div>
 
   <section aria-labelledby="results-h">
     <div class="sh">
-      <h2 id="results-h">Results</h2>
+      <h2 id="results-h" data-i18n="results">Results</h2>
       <div class="stats">
-        <div class="stat"><b>$40 → $0.50</b><p>Cost of one article after the LLM content pipeline I designed at Adzz. It served 58 projects.</p></div>
-        <div class="stat"><b>1000s a day</b><p>External sites handled by my Playwright automation, including sites without APIs.</p></div>
-        <div class="stat"><b>2 min → 2 s</b><p>Load time of key admin pages at Claustrophobia after SQL optimization and caching.</p></div>
+        <div class="stat"><b><bdi dir="ltr">$40 → $0.50</bdi></b><p data-i18n="st1">Cost of one article after the LLM content pipeline I designed at Adzz. It served 58 projects.</p></div>
+        <div class="stat"><b data-i18n="st2v">1000s a day</b><p data-i18n="st2">External sites handled by my Playwright automation, including sites without APIs.</p></div>
+        <div class="stat"><b data-i18n="st3v">2 min → 2 s</b><p data-i18n="st3">Load time of key admin pages at Claustrophobia after SQL optimization and caching.</p></div>
       </div>
     </div>
   </section>
 
   <section id="work" aria-labelledby="work-h">
     <div>
-      <h2 id="work-h">Own products</h2>
+      <h2 id="work-h" data-i18n="own">Own products</h2>
       <div class="projects">
         <article class="project">
-          <figure><img src="/assets/torhair.webp" width="1200" height="627" loading="lazy" alt="Torhair admin: notifications, menu and calendar screens"></figure>
+          <figure><img src="/assets/torhair.webp" width="1200" height="627" loading="lazy" alt="Torhair admin: notifications, menu and calendar screens" data-i18n-alt="altTh"></figure>
           <div>
-            <p class="kind">In production</p>
+            <p class="kind" data-i18n="thKind">In production</p>
             <h3>Torhair</h3>
-            <p>A mobile-first booking system for an independent hairstylist in Israel. It replaced manual scheduling, chats and spreadsheets. Online booking, a mobile admin, reminders, protection against double booking, verified backups.</p>
+            <p data-i18n="thDesc">A mobile-first booking system for an independent hairstylist in Israel. It replaced manual scheduling, chats and spreadsheets. Online booking, a mobile admin, reminders, protection against double booking, verified backups.</p>
             <p class="stack">TypeScript · React Router · Node.js · SQLite · Docker</p>
-            <p class="links"><a href="https://torhair.co.il/">torhair.co.il ↗</a></p>
+            <p class="links"><a href="/torhair/" data-i18n="projPage">Project page →</a></p>
           </div>
         </article>
         <article class="project">
-          <figure><img src="/assets/hebrew-live.webp" width="1200" height="723" loading="lazy" alt="Hebrew Live window with Hebrew speech and its English translation"></figure>
+          <figure><img src="/assets/hebrew-live.webp" width="1200" height="723" loading="lazy" alt="Hebrew Live window with Hebrew speech and its English translation" data-i18n-alt="altHl"></figure>
           <div>
-            <p class="kind">Open source · macOS</p>
+            <p class="kind" data-i18n="hlKind">Open source · macOS</p>
             <h3>Hebrew Live</h3>
-            <p>Live Hebrew transcription with translation next to it. Recognition and translation run locally on Apple Silicon, without a cloud service. I measured latency on real recordings and made the first draft appear 24% sooner.</p>
+            <p data-i18n="hlDesc">Live Hebrew transcription with translation next to it. Recognition and translation run locally on Apple Silicon, without a cloud service. I measured latency on real recordings and made the first draft appear 24% sooner.</p>
             <p class="stack">Python · MLX · TypeScript · React · Electron</p>
-            <p class="links"><a href="https://github.com/igor-markin/hebrew-live">Source on GitHub ↗</a></p>
+            <p class="links"><a href="/hebrew-live/" data-i18n="website">Website →</a><a href="https://github.com/igor-markin/hebrew-live" data-i18n="srcGh">Source on GitHub ↗</a></p>
           </div>
         </article>
         <article class="project">
-          <figure><img src="/assets/live-markdown-preview.webp" width="1200" height="791" loading="lazy" alt="Live Markdown Preview editor with source and preview side by side"></figure>
+          <figure><img src="/assets/live-markdown-preview.webp" width="1200" height="791" loading="lazy" alt="Live Markdown Preview editor with source and preview side by side" data-i18n-alt="altLmp"></figure>
           <div>
-            <p class="kind">Open source · Product Hunt</p>
+            <p class="kind" data-i18n="lmpKind">Open source · Product Hunt</p>
             <h3>Live Markdown Preview</h3>
-            <p>A local-first Markdown editor. No account and no backend: drafts stay in the browser. Rendering in a Web Worker, sanitized HTML, recovery of unsaved edits, conflict detection across tabs.</p>
+            <p data-i18n="lmpDesc">A local-first Markdown editor. No account and no backend: drafts stay in the browser. Rendering in a Web Worker, sanitized HTML, recovery of unsaved edits, conflict detection across tabs.</p>
             <p class="stack">TypeScript · Preact · Vite · IndexedDB · Cloudflare Workers</p>
-            <p class="links"><a href="/live-markdown-preview/">Website ↗</a><a href="/live-markdown-preview/editor/">Open the editor ↗</a><a href="https://github.com/igor-markin/live-markdown-preview">Source ↗</a></p>
+            <p class="links"><a href="/live-markdown-preview/" data-i18n="lmpSite">Website ↗</a><a href="/live-markdown-preview/editor/" data-i18n="openEditor">Open the editor ↗</a><a href="https://github.com/igor-markin/live-markdown-preview" data-i18n="source">Source ↗</a></p>
           </div>
         </article>
       </div>
@@ -228,29 +253,29 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
   <section id="experience" aria-labelledby="exp-h">
     <div class="sh">
-      <h2 id="exp-h">Experience</h2>
+      <h2 id="exp-h" data-i18n="exp">Experience</h2>
       <ol class="jobs">
         <li class="job">
-          <p class="when">Mar 2026 – now</p>
+          <p class="when" data-i18n="w1">Mar 2026 – now</p>
           <div>
             <h3>Defacta</h3>
-            <p class="role">Lead Engineer · Contract</p>
+            <p class="role" data-i18n="r1">Lead Engineer · Contract</p>
             <ul>
-              <li>Early-stage startup that helps people check claims and sources with LLMs. Lead engineer in a team of six.</li>
-              <li>Took the product from a backend pipeline to a web app and a Chrome extension in production.</li>
-              <li>Owned architecture, releases and production support. Compared models by quality, speed and cost.</li>
+              <li data-i18n="d1a">Early-stage startup that helps people check claims and sources with LLMs. Lead engineer in a team of six.</li>
+              <li data-i18n="d1b">Took the product from a backend pipeline to a web app and a Chrome extension in production.</li>
+              <li data-i18n="d1c">Owned architecture, releases and production support. Compared models by quality, speed and cost.</li>
             </ul>
           </div>
         </li>
         <li class="job">
-          <p class="when">Mar 2023 – Apr 2026</p>
+          <p class="when" data-i18n="w2">Mar 2023 – Apr 2026</p>
           <div>
             <h3>Adzz</h3>
-            <p class="role">Team Lead, from Aug 2023 · Senior Software Engineer before that</p>
+            <p class="role" data-i18n="r2">Team Lead, from Aug 2023 · Senior Software Engineer before that</p>
             <ul>
-              <li>Designed an LLM content pipeline from scratch: $40 → $0.50 per article, 58 projects. Business-critical rules stayed in code, not in prompts.</li>
-              <li>Built the internal platform: CRM, marketplace and QA bots.</li>
-              <li>Introduced code review and CI/CD, mentored four engineers and stayed hands-on.</li>
+              <li data-i18n="d2a">Designed an LLM content pipeline from scratch: $40 → $0.50 per article, 58 projects. Business-critical rules stayed in code, not in prompts.</li>
+              <li data-i18n="d2b">Built the internal platform: CRM, marketplace and QA bots.</li>
+              <li data-i18n="d2c">Introduced code review and CI/CD, mentored four engineers and stayed hands-on.</li>
             </ul>
           </div>
         </li>
@@ -258,10 +283,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <p class="when">2021 – 2023</p>
           <div>
             <h3>Claustrophobia</h3>
-            <p class="role">Backend Developer · Python, Django</p>
+            <p class="role" data-i18n="r3">Backend Developer · Python, Django</p>
             <ul>
-              <li>Django backend and internal admin tools for a network of escape rooms.</li>
-              <li>Restored a broken migration history so the team could deploy safely again.</li>
+              <li data-i18n="d3a">Django backend and internal admin tools for a network of escape rooms.</li>
+              <li data-i18n="d3b">Restored a broken migration history so the team could deploy safely again.</li>
             </ul>
           </div>
         </li>
@@ -269,16 +294,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <p class="when">2020 – 2021</p>
           <div>
             <h3>Legsy</h3>
-            <p class="role">Python Developer</p>
-            <ul><li>Fintech MVP for retail investors: brokerage API integrations and real-time stock alerts.</li></ul>
+            <p class="role" data-i18n="r4">Python Developer</p>
+            <ul><li data-i18n="d4a">Fintech MVP for retail investors: brokerage API integrations and real-time stock alerts.</li></ul>
           </div>
         </li>
         <li class="job">
           <p class="when">2015 – 2020</p>
           <div>
-            <h3>Freelance</h3>
-            <p class="role">Web Developer</p>
-            <ul><li>70+ websites for small businesses, mostly on WordPress. Full cycle, directly with business owners.</li></ul>
+            <h3 data-i18n="h5">Freelance</h3>
+            <p class="role" data-i18n="r5">Web Developer</p>
+            <ul><li data-i18n="d5a">70+ websites for small businesses, mostly on WordPress. Full cycle, directly with business owners.</li></ul>
           </div>
         </li>
       </ol>
@@ -287,33 +312,33 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
   <section aria-labelledby="how-h">
     <div class="sh">
-      <h2 id="how-h">How I work</h2>
+      <h2 id="how-h" data-i18n="how">How I work</h2>
       <div class="principles">
-        <div><h3>I own the design</h3><p>I use AI coding agents every day. I write the requirements and architecture, review every change and test the result myself.</p></div>
-        <div><h3>Reliability is a feature</h3><p>Tests, migrations, backups and monitoring are part of the product, not a later task.</p></div>
-        <div><h3>Close to the product</h3><p>I do best in small teams where I go from an unclear request to a working release and stay after launch.</p></div>
+        <div><h3 data-i18n="p1h">I own the design</h3><p data-i18n="p1">I use AI coding agents every day. I write the requirements and architecture, review every change and test the result myself.</p></div>
+        <div><h3 data-i18n="p2h">Reliability is a feature</h3><p data-i18n="p2">Tests, migrations, backups and monitoring are part of the product, not a later task.</p></div>
+        <div><h3 data-i18n="p3h">Close to the product</h3><p data-i18n="p3">I do best in small teams where I go from an unclear request to a working release and stay after launch.</p></div>
       </div>
     </div>
   </section>
 
   <section id="skills" aria-labelledby="skills-h">
     <div class="sh">
-      <h2 id="skills-h">Skills</h2>
+      <h2 id="skills-h" data-i18n="skills">Skills</h2>
       <dl class="skills">
         <div><dt>Backend</dt><dd>Python, FastAPI, Django, Node.js, PostgreSQL, Redis, Celery, REST APIs</dd></div>
         <div><dt>Frontend</dt><dd>TypeScript, React, Preact, Vite, Electron</dd></div>
         <div><dt>AI</dt><dd>LLM APIs, AI agents, model evaluation, local models on MLX</dd></div>
-        <div><dt>Quality and delivery</dt><dd>Docker, Playwright, Vitest, CI/CD, monitoring, Cloudflare Workers</dd></div>
+        <div><dt data-i18n="sk4">Quality and delivery</dt><dd>Docker, Playwright, Vitest, CI/CD, monitoring, Cloudflare Workers</dd></div>
       </dl>
     </div>
   </section>
 
   <section id="contact" class="contact" aria-labelledby="contact-h">
     <div class="sh">
-      <h2 id="contact-h">Contact</h2>
+      <h2 id="contact-h" data-i18n="contact">Contact</h2>
       <div>
-        <h3>Building a product with AI? Let’s talk.</h3>
-        <p>Full-time or contract through my Israeli business. Northern Israel, hybrid around Haifa or fully remote. I speak English and Russian; my Hebrew is basic.</p>
+        <h3 data-i18n="cH">Building a product with AI? Let’s talk.</h3>
+        <p data-i18n="cP">Full-time or contract through my Israeli business. Northern Israel, hybrid around Haifa or fully remote. I speak English and Russian; my Hebrew is basic.</p>
         <div class="actions">
           <a class="btn primary" href="mailto:9588604@gmail.com">9588604@gmail.com</a>
           <a class="btn" href="https://www.linkedin.com/in/markin-pro/">LinkedIn</a>
@@ -325,7 +350,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </main>
 
 <footer>
-  <div class="wrap"><span>© 2026 Igor Markin</span><a href="#main">Back to top ↑</a></div>
+  <div class="wrap"><span>© 2026 Igor Markin</span><a href="#main" data-i18n="top">Back to top ↑</a></div>
 </footer>
 </body>
 </html>
