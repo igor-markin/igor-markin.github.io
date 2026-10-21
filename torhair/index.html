@@ -18,6 +18,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <script>try{var t=localStorage.getItem("site-theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/brand/v1/brand.css">
+<script src="/brand/v1/brand.js" defer></script>
 <style>
 :root{
   --bg:#fbf7f8;--surface:#fff;--soft:#f4e7ed;--ink:#1d1418;--muted:#675a60;--faint:#968a90;
@@ -173,9 +175,8 @@ code{font:14px ui-monospace,SFMono-Regular,Menlo,monospace;background:color-mix(
 .card li{margin-top:6px}
 .privacy{font-size:14.5px;color:var(--faint);margin-top:18px}
 
-.author{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;background:var(--plum-soft);border-radius:26px;padding:36px}
-.author h2{margin:0 0 6px;font-size:clamp(26px,3vw,36px)}
-.author p{color:var(--muted)}
+/* Shared author block from /brand/v1/, in Torhair colours */
+:root{--im-card:var(--plum-soft);--im-card-ink:var(--ink);--im-card-muted:var(--muted);--im-card-line:var(--line);--im-chip:var(--surface);--im-accent:var(--plum);--im-accent-ink:var(--plum-ink);--im-ring:var(--surface);--im-font-display:var(--serif);--im-title-weight:600;--im-radius:26px;--im-btn-radius:12px}
 footer{padding:32px 0 48px;font-size:14px;color:var(--faint)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
@@ -204,7 +205,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .ba,.flow,.features,.decisions,.screens{grid-template-columns:1fr}
   .screens figure:nth-child(2){transform:none}
   .screens .shot{max-width:360px}
-  .author{padding:26px}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -397,16 +397,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </section>
 
   <div class="wrap" style="padding-bottom:56px">
-    <div class="author reveal">
-      <div>
-        <h2 data-i18n="auH">Designed and built by Igor Markin</h2>
-        <p data-i18n="auP">Product, architecture, code and operations. Senior full-stack engineer in Israel.</p>
+    <aside class="im-author reveal" data-im-product="torhair" aria-labelledby="im-author-title-0">
+      <a class="im-author-photo" href="/" tabindex="-1" aria-hidden="true"><img src="/assets/igor-320.webp" srcset="/assets/igor-320.webp 320w, /assets/igor-640.webp 640w" sizes="80px" width="80" height="80" loading="lazy" alt="Igor Markin"></a>
+      <div class="im-author-text">
+        <p class="im-author-kicker">The author</p>
+        <h2 class="im-author-title" id="im-author-title-0"><a href="/">Built by Igor Markin</a></h2>
+        <p class="im-author-lead">Senior full-stack engineer in Israel. I build LLM-powered products that hold up in production.</p>
       </div>
-      <div class="actions" style="margin-top:0">
-        <a class="btn primary" href="/" data-i18n="auSite">About me</a>
-        <a class="btn" href="mailto:9588604@gmail.com" data-i18n="auMail">Email me</a>
+      <div class="im-author-actions">
+        <a class="im-author-btn im-author-btn-primary" href="/#contact">Work with me</a>
+        <a class="im-author-btn im-author-btn-secondary" href="mailto:9588604@gmail.com">Email me</a>
       </div>
-    </div>
+      <nav class="im-author-also" aria-label="More of my projects">
+        <span class="im-author-also-label">More of my projects:</span>
+        <a class="im-author-chip" href="/hebrew-live/" lang="en"><img src="/brand/v1/icons/hebrew-live.png" width="20" height="20" alt="">Hebrew Live</a>
+        <a class="im-author-chip" href="/live-markdown-preview/" lang="en"><img src="/brand/v1/icons/live-markdown-preview.svg" width="20" height="20" alt="">Live Markdown Preview</a>
+      </nav>
+    </aside>
   </div>
 </main>
 
@@ -466,7 +473,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     stI:"Torhair работает в production у частного парикмахера в Израиле с августа 2026 года. Первая версия намеренно рассчитана на одну установку для одного мастера: не маркетплейс и не салон с сотрудниками.",
     priv:"На этой странице нет данных клиентов. На экранах — демонстрационные данные; живая страница записи и её адрес здесь не публикуются.",
     nxH:"Сознательно не вошло в первую версию",nx1:"Аккаунты клиентов и самостоятельный перенос",nx2:"Онлайн-оплата картой",nx3:"Массовые рассылки и маркетинг",nx4:"Несколько мастеров в одном календаре",
-    auH:"Придумал и сделал Игорь Маркин",auP:"Продукт, архитектура, код и эксплуатация. Senior full-stack разработчик, Израиль.",auSite:"Обо мне",auMail:"Написать",back:"← igor-markin.github.io"
+    back:"← igor-markin.github.io"
   };
   var he={
     skip:"דילוג לתוכן",navHow:"איך זה עובד",navAdmin:"ניהול",navEng:"הנדסה",
@@ -515,7 +522,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     stI:"Torhair פועל בייצור אצל ספרית עצמאית בישראל מאוגוסט 2026. הגרסה הראשונה בנויה בכוונה כהתקנה אחת לבעלת מקצוע אחת: לא מרקטפלייס ולא מספרה עם עובדים.",
     priv:"בדף הזה אין נתוני לקוחות. במסכים יש תוכן הדגמה; דף קביעת התורים החי והכתובת שלו לא מפורסמים כאן.",
     nxH:"לא נכנס לגרסה הראשונה, בכוונה",nx1:"חשבונות לקוח ושינוי תור עצמאי",nx2:"תשלום מקוון בכרטיס אשראי",nx3:"הודעות המוניות ושיווק",nx4:"כמה בעלי מקצוע ביומן אחד",
-    auH:"תוכנן ונבנה על ידי איגור מרקין",auP:"מוצר, ארכיטקטורה, קוד ותפעול. מפתח Full-Stack בכיר בישראל.",auSite:"עליי",auMail:"לכתוב לי",back:"← igor-markin.github.io"
+    back:"← igor-markin.github.io"
   };
   var themeL={en:["Dark theme","Light theme"],he:["ערכת נושא כהה","ערכת נושא בהירה"],ru:["Тёмная тема","Светлая тема"]};
   var nodes=[].slice.call(document.querySelectorAll('[data-i18n]'));

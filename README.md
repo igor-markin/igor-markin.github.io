@@ -8,4 +8,5 @@ English is in the markup. Hebrew (RTL) and Russian live in `assets/i18n.js`, key
 
 - `assets/` images in WebP; `assets/og.png` is the social preview (1200×630)
 - `torhair/` project page of Torhair; screens use demo data, no client data
+- `brand/` shared brand layer of all sites on this domain: author block, project list, starter for a new site; see `brand/README.md`
 - `privacy.html` privacy policy of the private `assistant` OAuth app, kept at its old URL
