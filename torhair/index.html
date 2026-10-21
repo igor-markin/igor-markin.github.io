@@ -177,8 +177,7 @@ code{font:14px ui-monospace,SFMono-Regular,Menlo,monospace;background:color-mix(
 
 /* Shared author block from /brand/v1/, in Torhair colours */
 :root{--im-card:var(--plum-soft);--im-card-ink:var(--ink);--im-card-muted:var(--muted);--im-card-line:var(--line);--im-chip:var(--surface);--im-accent:var(--plum);--im-accent-ink:var(--plum-ink);--im-ring:var(--surface);--im-font-display:var(--serif);--im-title-weight:600;--im-radius:26px;--im-btn-radius:12px}
-footer{padding:32px 0 48px;font-size:14px;color:var(--faint)}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.im-foot{--im-foot-ink:var(--ink);--im-foot-muted:var(--faint);--im-foot-line:var(--line)}
 
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
@@ -417,10 +416,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>© 2026 Igor Markin</span>
-    <a href="/" data-i18n="back">← igor-markin.github.io</a>
+<footer class="im-foot">
+  <div class="wrap im-foot-row">
+    <a class="im-foot-product" href="#"><img src="assets/favicon.svg" width="22" height="22" alt="">Torhair</a>
+    <nav class="im-foot-links" aria-label="Footer"><a href="#main" data-i18n="top">Back to top ↑</a></nav>
+    <a class="im-foot-sign" href="/">© 2026 Igor Markin</a>
   </div>
 </footer>
 
@@ -473,7 +473,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     stI:"Torhair работает в production у частного парикмахера в Израиле с августа 2026 года. Первая версия намеренно рассчитана на одну установку для одного мастера: не маркетплейс и не салон с сотрудниками.",
     priv:"На этой странице нет данных клиентов. На экранах — демонстрационные данные; живая страница записи и её адрес здесь не публикуются.",
     nxH:"Сознательно не вошло в первую версию",nx1:"Аккаунты клиентов и самостоятельный перенос",nx2:"Онлайн-оплата картой",nx3:"Массовые рассылки и маркетинг",nx4:"Несколько мастеров в одном календаре",
-    back:"← igor-markin.github.io"
+    top:"Наверх ↑"
   };
   var he={
     skip:"דילוג לתוכן",navHow:"איך זה עובד",navAdmin:"ניהול",navEng:"הנדסה",
@@ -522,7 +522,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     stI:"Torhair פועל בייצור אצל ספרית עצמאית בישראל מאוגוסט 2026. הגרסה הראשונה בנויה בכוונה כהתקנה אחת לבעלת מקצוע אחת: לא מרקטפלייס ולא מספרה עם עובדים.",
     priv:"בדף הזה אין נתוני לקוחות. במסכים יש תוכן הדגמה; דף קביעת התורים החי והכתובת שלו לא מפורסמים כאן.",
     nxH:"לא נכנס לגרסה הראשונה, בכוונה",nx1:"חשבונות לקוח ושינוי תור עצמאי",nx2:"תשלום מקוון בכרטיס אשראי",nx3:"הודעות המוניות ושיווק",nx4:"כמה בעלי מקצוע ביומן אחד",
-    back:"← igor-markin.github.io"
+    top:"חזרה למעלה ↑"
   };
   var themeL={en:["Dark theme","Light theme"],he:["ערכת נושא כהה","ערכת נושא בהירה"],ru:["Тёмная тема","Светлая тема"]};
   var nodes=[].slice.call(document.querySelectorAll('[data-i18n]'));

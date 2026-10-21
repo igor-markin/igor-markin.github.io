@@ -30,6 +30,7 @@
 :root{
   --im-card:var(--surface);--im-card-ink:var(--ink);--im-card-muted:var(--muted);--im-card-line:var(--line);
   --im-chip:var(--bg);--im-accent:var(--accent);--im-accent-ink:var(--accent-ink);--im-ring:var(--accent-soft);
+  --im-foot-ink:var(--ink);--im-foot-muted:var(--muted);--im-foot-line:var(--line);
 }
 *{box-sizing:border-box;margin:0}
 body{background:var(--bg);color:var(--ink);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
@@ -47,9 +48,6 @@ header .wrap{display:flex;align-items:center;gap:16px;height:68px}
 h1{font-size:clamp(38px,6vw,64px);line-height:1.05;letter-spacing:-.03em;max-width:14em}
 .hero p{margin-top:18px;max-width:36em;font-size:19px;color:var(--muted)}
 .author-wrap{padding-block:24px 72px}
-footer{border-top:1px solid var(--line);padding:24px 0 40px;font-size:14px;color:var(--muted)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
-footer nav{display:flex;flex-wrap:wrap;gap:16px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 </style>
 </head>
@@ -95,22 +93,22 @@ footer nav{display:flex;flex-wrap:wrap;gap:16px}
   </div>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>Product name</span>
-    <nav aria-label="Links" data-i18n-aria="footLabel">
+<footer class="im-foot">
+  <div class="wrap im-foot-row">
+    <a class="im-foot-product" href="#">Product name</a>
+    <nav class="im-foot-links" aria-label="Links" data-i18n-aria="footLabel">
       <a href="https://github.com/igor-markin">GitHub</a>
-      <a href="/" data-i18n="home">© Igor Markin</a>
     </nav>
+    <a class="im-foot-sign" href="/">© 2026 Igor Markin</a>
   </div>
 </footer>
 
 <script>
 (() => {
   const copy = {
-    en: { h1: 'The product promise in one sentence.', lead: 'What it does, for whom, and the one thing that makes it different.', langLabel: 'Site language', footLabel: 'Links', home: '© Igor Markin', themeDark: 'Dark theme', themeLight: 'Light theme' },
-    he: { h1: 'ההבטחה של המוצר במשפט אחד.', lead: 'מה הוא עושה, בשביל מי, ומה מייחד אותו.', langLabel: 'שפת האתר', footLabel: 'קישורים', home: '© איגור מרקין', themeDark: 'ערכת נושא כהה', themeLight: 'ערכת נושא בהירה' },
-    ru: { h1: 'Обещание продукта в одном предложении.', lead: 'Что он делает, для кого и чем отличается.', langLabel: 'Язык сайта', footLabel: 'Ссылки', home: '© Игорь Маркин', themeDark: 'Тёмная тема', themeLight: 'Светлая тема' },
+    en: { h1: 'The product promise in one sentence.', lead: 'What it does, for whom, and the one thing that makes it different.', langLabel: 'Site language', footLabel: 'Links', themeDark: 'Dark theme', themeLight: 'Light theme' },
+    he: { h1: 'ההבטחה של המוצר במשפט אחד.', lead: 'מה הוא עושה, בשביל מי, ומה מייחד אותו.', langLabel: 'שפת האתר', footLabel: 'קישורים', themeDark: 'ערכת נושא כהה', themeLight: 'ערכת נושא בהירה' },
+    ru: { h1: 'Обещание продукта в одном предложении.', lead: 'Что он делает, для кого и чем отличается.', langLabel: 'Язык сайта', footLabel: 'Ссылки', themeDark: 'Тёмная тема', themeLight: 'Светлая тема' },
   };
   const root = document.documentElement;
   let lang = 'en';

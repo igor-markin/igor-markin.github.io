@@ -92,3 +92,25 @@
 @media (prefers-reduced-motion: reduce) {
   .im-author-btn { transition: none; }
 }
+
+/* ---------- Footer ----------
+   One row on every site: product, the product's own links, the shared signature.
+   Colours follow the site through --im-foot-*; without them the footer inherits. */
+.im-foot {
+  border-top: 1px solid var(--im-foot-line, color-mix(in srgb, currentColor 14%, transparent));
+  padding-block: 28px 40px;
+  font-size: 14.5px; line-height: 1.5;
+  color: var(--im-foot-muted, inherit);
+}
+.im-foot-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; }
+.im-foot a { color: inherit; text-decoration: none; }
+.im-foot a:hover { color: var(--im-foot-ink, inherit); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.im-foot a.im-foot-product { display: inline-flex; align-items: center; gap: 10px; font-weight: 650; color: var(--im-foot-ink, inherit); }
+.im-foot a.im-foot-product:hover { text-decoration: none; }
+.im-foot-product img { display: block; width: 22px; height: 22px; border-radius: 6px; box-shadow: 0 0 0 1px var(--im-foot-line, transparent); }
+.im-foot-links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-inline-start: auto; }
+.im-foot-sign { white-space: nowrap; }
+@media (max-width: 560px) {
+  .im-foot-row { flex-direction: column; align-items: flex-start; }
+  .im-foot-links { margin-inline-start: 0; }
+}

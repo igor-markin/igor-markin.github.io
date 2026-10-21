@@ -7,6 +7,7 @@ Shared parts of every site on `igor-markin.github.io`. The main site is the mast
 | Shared on every site | Own on every product site |
 | --- | --- |
 | Author block: structure, photo, copy in EN/HE/RU, buttons | Accent colour and palette of both themes |
+| Footer: product · product links · © year Igor Markin | The product links in the footer |
 | "More of my projects" list | Icon and heading typeface |
 | Language switch EN/HE/RU, English by default; `site-lang` in `localStorage` and `?lang=` | Header and first screen |
 | Theme switch, system theme by default; `site-theme` in `localStorage` | Page sections and their design |
@@ -14,7 +15,7 @@ Shared parts of every site on `igor-markin.github.io`. The main site is the mast
 
 ## Files
 
-- `v1/brand.css` styles of the author block. Colours come from `--im-*` variables; a site that sets none gets the main site palette.
+- `v1/brand.css` styles of the author block and the footer. Colours come from `--im-*` variables; a site that sets none gets the main site palette.
 - `v1/brand.js` copy in three languages, the project list, rendering. It follows `<html lang>`, so it works with any site i18n script.
 - `v1/icons/` product icons for the project list.
 - `v1/starter/index.html` a new site: header with language and theme switches, hero, author block, footer.
@@ -30,6 +31,8 @@ A breaking change goes to `v2/`. Sites keep loading `v1/` until they move.
 
 Paste the `<aside class="im-author">` block from `v1/starter/index.html` above the footer and set `data-im-product` to the product id. The static English copy inside stays for visitors without JavaScript.
 
+The footer is `<footer class="im-foot">` with three parts in one row: `.im-foot-product`, `.im-foot-links` (the site's own links, translated by the site) and `.im-foot-sign`, which `brand.js` fills with "© year Igor Markin" in the page language. `data-im-sign="short"` keeps only the year; the main site uses it.
+
 Map the site tokens on `:root` or on the block wrapper:
 
 | Variable | Meaning |
@@ -42,6 +45,7 @@ Map the site tokens on `:root` or on the block wrapper:
 | `--im-accent-shadow`, `--im-ring`, `--im-kicker` | button shadow, photo ring, label colour |
 | `--im-font-display`, `--im-title-weight` | heading typeface and weight |
 | `--im-radius`, `--im-btn-radius` | card and button corner radius |
+| `--im-foot-ink`, `--im-foot-muted`, `--im-foot-line` | footer: product name, links, top border |
 
 Define them with the site tokens, so the dark theme comes for free: `--im-accent: var(--accent)`.
 
