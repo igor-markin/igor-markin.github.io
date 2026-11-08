@@ -94,9 +94,6 @@ h1{font-size:clamp(38px,5.6vw,62px);line-height:1.05;letter-spacing:-.035em;font
 .btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .btn.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
 .btn svg{flex:none}
-.btn.cv small{font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 6px;border-radius:5px;background:color-mix(in srgb,var(--bg) 18%,transparent);margin-inline-start:2px}
-nav a.navcv{color:var(--accent);font-weight:600;padding:3px 11px;border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);border-radius:999px}
-nav a.navcv:hover{color:var(--bg);background:var(--accent);border-color:var(--accent)}
 .portrait{position:relative;aspect-ratio:1;isolation:isolate;margin-bottom:96px}
 .portrait::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--accent);opacity:.16;border-radius:58% 42% 38% 62% / 46% 58% 42% 54%;transform:translate(14px,-10px) rotate(-8deg);animation:blob 18s ease-in-out infinite alternate-reverse}
 .photo{width:100%;height:100%;object-fit:cover;border-radius:46% 54% 60% 40% / 42% 43% 57% 58%;box-shadow:var(--shadow);background:var(--line);animation:blob 18s ease-in-out infinite alternate}
@@ -160,7 +157,7 @@ h3{font-size:21px;line-height:1.3;letter-spacing:-.015em;font-weight:650}
 @media (max-width:560px){
   .wrap{padding:0 16px}
   nav{gap:18px;font-size:14px}
-  nav .opt,nav .navcv{display:none}
+  nav .opt{display:none}
   header .wrap{gap:12px}
   .brand{white-space:nowrap}
   .job{grid-template-columns:1fr;gap:4px}
@@ -178,7 +175,6 @@ h3{font-size:21px;line-height:1.3;letter-spacing:-.015em;font-weight:650}
       <a class="opt" href="#experience" data-i18n="navExp">Experience</a>
       <a class="opt" href="#skills" data-i18n="navSkills">Skills</a>
       <a class="opt" href="#contact" data-i18n="navContact">Contact</a>
-      <a class="navcv" href="/Igor_Markin_CV.pdf" download="Igor_Markin_CV.pdf" type="application/pdf">CV</a>
       <div class="controls">
         <div class="lang" role="group" aria-label="Language">
           <button type="button" data-lang="en" aria-pressed="true" lang="en">EN</button>
@@ -199,8 +195,7 @@ h3{font-size:21px;line-height:1.3;letter-spacing:-.015em;font-weight:650}
       <p class="lede" data-i18n="lede">11 years in web development: 5 as a freelancer and 6 in product teams, including a team lead role. I work mostly on the backend with Python, Node.js, TypeScript and PostgreSQL.</p>
       <p class="status"><i aria-hidden="true"></i><span data-i18n="status">Open to Senior Full-Stack, Product Engineer and Tech Lead roles · remote or hybrid</span></p>
       <div class="actions">
-        <a class="btn primary cv" href="/Igor_Markin_CV.pdf" download="Igor_Markin_CV.pdf" type="application/pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-i18n="cv">Download CV</span><small>PDF</small></a>
-        <a class="btn" href="https://www.linkedin.com/in/markin-pro/" rel="me">LinkedIn</a>
+        <a class="btn primary" href="https://www.linkedin.com/in/markin-pro/" rel="me">LinkedIn</a>
         <a class="btn" href="https://github.com/igor-markin" rel="me">GitHub</a>
       </div>
     </div>
@@ -346,7 +341,6 @@ h3{font-size:21px;line-height:1.3;letter-spacing:-.015em;font-weight:650}
         <p data-i18n="cP">Full-time or contract through my Israeli business. Based in Karmiel: remote, or hybrid in the Haifa area or Tel Aviv. I speak English and Russian; my Hebrew is basic.</p>
         <div class="actions">
           <a class="btn primary" href="https://www.linkedin.com/in/markin-pro/">LinkedIn</a>
-          <a class="btn" href="/Igor_Markin_CV.pdf" download="Igor_Markin_CV.pdf" type="application/pdf"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span data-i18n="cv">Download CV</span></a>
           <a class="btn" href="https://github.com/igor-markin">GitHub</a>
         </div>
       </div>
