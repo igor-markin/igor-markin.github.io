@@ -12,7 +12,7 @@
 
   const HOME = '/';
   const CONTACT = '/#contact';
-  const EMAIL = 'mailto:9588604@gmail.com';
+  const LINKEDIN = 'https://www.linkedin.com/in/markin-pro/';
 
   const TEXT = {
     en: {
@@ -20,7 +20,7 @@
       title: 'Built by Igor Markin',
       lead: 'Senior full-stack engineer in Israel. I build LLM-powered products that hold up in production.',
       work: 'Work with me',
-      mail: 'Email me',
+      mail: 'LinkedIn',
       also: 'More of my projects',
       photo: 'Igor Markin',
       name: 'Igor Markin',
@@ -30,7 +30,7 @@
       title: 'Сделал Игорь Маркин',
       lead: 'Senior full-stack разработчик в Израиле. Делаю продукты на LLM, которые выдерживают production.',
       work: 'Работать со мной',
-      mail: 'Написать',
+      mail: 'LinkedIn',
       also: 'Ещё мои проекты',
       photo: 'Игорь Маркин',
       name: 'Игорь Маркин',
@@ -40,7 +40,7 @@
       title: 'נבנה על ידי איגור מרקין',
       lead: 'מפתח Full-Stack בכיר בישראל. אני בונה מוצרים מבוססי LLM שעובדים בייצור.',
       work: 'עבודה איתי',
-      mail: 'לכתוב לי',
+      mail: 'LinkedIn',
       also: 'עוד פרויקטים שלי',
       photo: 'איגור מרקין',
       name: 'איגור מרקין',
@@ -82,7 +82,7 @@
     text.append(el('p', 'im-author-kicker', t.kicker), title, el('p', 'im-author-lead', t.lead));
 
     const actions = el('div', 'im-author-actions');
-    actions.append(link('im-author-btn im-author-btn-primary', CONTACT, t.work), link('im-author-btn im-author-btn-secondary', EMAIL, t.mail));
+    actions.append(link('im-author-btn im-author-btn-primary', CONTACT, t.work), link('im-author-btn im-author-btn-secondary', LINKEDIN, t.mail));
 
     const also = el('nav', 'im-author-also');
     also.setAttribute('aria-label', t.also);
