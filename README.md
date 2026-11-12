@@ -1,10 +1,10 @@
 # igor-markin.github.io
 
-Personal site of Igor Markin, served by GitHub Pages from `main`.
+Pages of Igor Markin, served by GitHub Pages from `main`.
 
-Plain HTML and CSS, no build step. Edit `index.html` and push.
+The home page only redirects to the GitHub profile (github.com/igor-markin), which is the main profile now. Everything else below stays at its URL. Plain HTML and CSS, no build step.
 
-English is in the markup. Hebrew (RTL) and Russian live in `assets/i18n.js`, keyed by `data-i18n` attributes; the same script runs the light/dark switch. Language and theme choices are stored in `localStorage` (`site-lang`, `site-theme`) and shared with the project pages on this domain.
+`assets/i18n.js` belonged to the old home page and is no longer loaded; it stays so the old page can be restored from git. Language and theme choices of the project pages are stored in `localStorage` (`site-lang`, `site-theme`).
 
 - `assets/` images in WebP; `assets/og.png` is the social preview (1200×630)
 - `torhair/` project page of Torhair; screens use demo data, no client data
