@@ -10,15 +10,15 @@
     { id: 'torhair', name: 'Torhair', url: '/torhair/', icon: '/brand/v1/icons/torhair.svg' },
   ];
 
-  const HOME = '/';
-  const CONTACT = '/#contact';
+  const HOME = 'https://github.com/igor-markin';
+  const CONTACT = 'https://github.com/igor-markin';
   const LINKEDIN = 'https://www.linkedin.com/in/markin-pro/';
 
   const TEXT = {
     en: {
       kicker: 'The author',
       title: 'Built by Igor Markin',
-      lead: 'Senior full-stack engineer in Israel. I build LLM-powered products that hold up in production.',
+      lead: 'Hands-on AI tech lead in Israel. I build LLM products and lead the small teams that ship them.',
       work: 'Work with me',
       mail: 'LinkedIn',
       also: 'More of my projects',
@@ -28,7 +28,7 @@
     ru: {
       kicker: 'Автор',
       title: 'Сделал Игорь Маркин',
-      lead: 'Senior full-stack разработчик в Израиле. Делаю продукты на LLM, которые выдерживают production.',
+      lead: 'Играющий тимлид AI-команды в Израиле. Делаю продукты на LLM и веду небольшие команды, которые их выпускают.',
       work: 'Работать со мной',
       mail: 'LinkedIn',
       also: 'Ещё мои проекты',
@@ -38,7 +38,7 @@
     he: {
       kicker: 'היוצר',
       title: 'נבנה על ידי איגור מרקין',
-      lead: 'מפתח Full-Stack בכיר בישראל. אני בונה מוצרים מבוססי LLM שעובדים בייצור.',
+      lead: 'ראש צוות AI שכותב קוד בעצמו, בישראל. אני בונה מוצרי LLM ומוביל צוותים קטנים שמשיקים אותם.',
       work: 'עבודה איתי',
       mail: 'LinkedIn',
       also: 'עוד פרויקטים שלי',
